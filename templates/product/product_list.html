@@ -4,22 +4,28 @@
 
 {% block content %}
 {% for product in products %}
-<h1>{{ brand }}</h1>
-    <img src="{{ logo }}" alt="{{ brand }} Logo" class="logo">
+<h1>{{ product.brand }}</h1>
+<img src="{{ product.logo }}" width="400px" height="400px" alt="{{ product.brand }} Logo" class="logo">
 
-    <p class="rating">Rating: ⭐️ {{ rating }}/5</p>
-    <p class="status">Status: {{ "Not boycotted" if status else "Boycotted" }}</p>
+<p class="rating">Rating: ⭐ {{ product.rating }}/5</p>
+<p class="status">Status:
+    {% if product.status %}
+    "Not boycotted"
+    {% else %}
+    "Boycotted"
+    {% endif %}
+</p>
 
-    <div class="description">
-        <p><strong>EN:</strong> {{ description_en }}</p>
-        <p><strong>RU:</strong> {{ description_ru }}</p>
-        <p><strong>KG:</strong> {{ description_kg }}</p>
-    </div>
+<div class="description">
+    <p><strong>EN:</strong> {{ product.description_en }}</p>
+    <p><strong>RU:</strong> {{ product.description_ru }}</p>
+    <p><strong>KG:</strong> {{ product.description_kg }}</p>
+</div>
 
-    <div class="links">
-        {% if url_en %} <a href="{{ url_en }}" target="_blank">Website (EN)</a> {% endif %}
-        {% if url_ru %} <a href="{{ url_ru }}" target="_blank">Website (RU)</a> {% endif %}
-        {% if url_kg %} <a href="{{ url_kg }}" target="_blank">Website (KG)</a> {% endif %}
-    </div>
-{% endif %}
+<div class="links">
+    {% if product.url_en %} <a href="{{ product.url_en }}" target="_blank">Website (EN)</a> {% endif %}
+    {% if product.url_ru %} <a href="{{ product.url_ru }}" target="_blank">Website (RU)</a> {% endif %}
+    {% if product.url_kg %} <a href="{{ product.url_kg }}" target="_blank">Website (KG)</a> {% endif %}
+</div>
+{% endfor %}
 {% endblock content %}
