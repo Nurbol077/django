@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Все пользователи</h1>
+<table border="1">
+    <tr>
+        <td>Почта</td>
+        <td>Имя</td>
+        <td>Фамилия</td>
+        <td>Возраст</td>
+        <td>Телефон номер</td>
+        <td>Дата</td>
+        <td>Вес</td>
+        <td>Рост</td>
+        <td>Документ</td>
+    </tr>
+    {% for person in people %}
+    <tr>
+        <td>{{person.email}}</td>
+        <td>{{person.first_name}}</td>
+        <td>{{person.last_name}}</td>
+        <td>{{person.age}}</td>
+        <td>{{person.phone}}</td>
+        <td>{{person.date_of_birth}}</td>
+        <td>{{person.weight}}</td>
+        <td>{{person.height}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
