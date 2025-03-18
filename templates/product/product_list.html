@@ -3,15 +3,23 @@
 {% block title %}Все продукты{% endblock title %}
 
 {% block content %}
-<h1>Банан</h1>
-<p>
-    Бана́н — название съедобных плодов культивируемых растений рода Банан (Musa);
-    обычно под таковыми понимают Musa acuminata и Musa × paradisiaca, а также Musa balbisiana,
-    Musa fehi[англ.], Musa troglodytarum[англ.] и ряд других.
-    Также бананами могут называть плоды Ensete ventricosum[англ.]
-    (строго говоря, являющегося представителем другого рода семейства Банановые)[1][2].
-    С ботанической точки зрения банан является ягодой[3], многосеменной и толстокожей.
-    У культурных форм часто отсутствуют семена, ненужные при вегетативном размножении.
-    Плоды имеют длину 6—30 см и диаметр 2—5 см.
-</p>
+{% for product in products %}
+<h1>{{ brand }}</h1>
+    <img src="{{ logo }}" alt="{{ brand }} Logo" class="logo">
+
+    <p class="rating">Rating: ⭐️ {{ rating }}/5</p>
+    <p class="status">Status: {{ "Not boycotted" if status else "Boycotted" }}</p>
+
+    <div class="description">
+        <p><strong>EN:</strong> {{ description_en }}</p>
+        <p><strong>RU:</strong> {{ description_ru }}</p>
+        <p><strong>KG:</strong> {{ description_kg }}</p>
+    </div>
+
+    <div class="links">
+        {% if url_en %} <a href="{{ url_en }}" target="_blank">Website (EN)</a> {% endif %}
+        {% if url_ru %} <a href="{{ url_ru }}" target="_blank">Website (RU)</a> {% endif %}
+        {% if url_kg %} <a href="{{ url_kg }}" target="_blank">Website (KG)</a> {% endif %}
+    </div>
+{% endif %}
 {% endblock content %}
